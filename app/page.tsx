@@ -2,7 +2,9 @@
 
 import { useMemo, useState } from "react";
 import "./polish.css";
+import "./p1.css";
 import {WorkScreenV2,MembersScreenV2,AnalysisV2} from "./p0-components";
+import {ReportV2,TrainingV2} from "./p1-components";
 
 type FollowMode = "free" | "mine" | "other";
 type Tab = "work" | "members" | "me";
@@ -34,11 +36,11 @@ export default function Home(){
       {screen==="root"&&tab==="me"&&<MeScreen serviceData={()=>setScreen("serviceData")}/>} 
       {screen==="serviceData"&&<ServiceData back={()=>setScreen("root")} open={openMember}/>} 
       {screen==="detail"&&<MemberDetail member={member} back={()=>goRoot("members")} report={()=>setScreen("report")} analysis={()=>setScreen("analysis")} follow={()=>setScreen("follow")} convert={()=>setScreen("convert")} training={()=>setScreen("training")} start={()=>{setOverrides(s=>({...s,[member.id]:"mine"}));flash("已取得跟进权，其他教练将看到脱敏状态")}} flash={flash}/>} 
-      {screen==="report"&&<Report member={member} back={()=>setScreen("detail")} analysis={()=>setScreen("analysis")}/>} 
+      {screen==="report"&&<ReportV2 member={member} back={()=>setScreen("detail")} analysis={()=>setScreen("analysis")}/>} 
       {screen==="analysis"&&<AnalysisV2 member={member} value={analysisText} setValue={setAnalysisText} status={analysisStatus} setStatus={setAnalysisStatus} back={()=>setScreen("detail")} follow={()=>setScreen("follow")} flash={flash}/>} 
       {screen==="follow"&&<Follow member={member} back={()=>setScreen("detail")} convert={()=>setScreen("convert")} flash={flash}/>} 
       {screen==="convert"&&<Convert member={member} back={()=>setScreen("detail")} confirm={()=>{setConverted(true);setScreen("training");flash("已建立唯一私教归属")}}/>} 
-      {screen==="training"&&<Training member={member} status={planStatus} setStatus={setPlanStatus} back={()=>setScreen("detail")} flash={flash}/>} 
+      {screen==="training"&&<TrainingV2 member={member} status={planStatus} setStatus={setPlanStatus} back={()=>setScreen("detail")} flash={flash}/>} 
     </div>{screen==="root"&&<nav className="bottom-nav">{tabs.map(x=><button key={x.id} onClick={()=>goRoot(x.id)} className={tab===x.id?"active":""}><span>{x.symbol}</span>{x.label}</button>)}</nav>}{toast&&<div className="toast">{toast}</div>}</section>
   </main>;
 }
