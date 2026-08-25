@@ -33,6 +33,7 @@ jobs:
                      .replaceAll('"_next/', '"' + prefix + '/_next/')
                      .replaceAll("'_next/", "'" + prefix + "/_next/")
                      .replaceAll('`_next/', '`' + prefix + '/_next/')
+                     .replaceAll(prefix + '/_next', 'https://huihui1071.github.io' + prefix + '/_next')
                      .replaceAll('/favicon', prefix + '/favicon')
                      .replaceAll(prefix + prefix, prefix);
                 fs.writeFileSync(p, s);
