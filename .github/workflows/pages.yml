@@ -18,30 +18,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - name: Prefix GitHub Pages asset paths
-        run: |
-          node <<'NODE'
-          const fs = require('fs'), path = require('path');
-          const root = 'dist/client', prefix = '/ai-body-coach-mvp';
-          function walk(dir) {
-            for (const ent of fs.readdirSync(dir, {withFileTypes:true})) {
-              const p = path.join(dir, ent.name);
-              if (ent.isDirectory()) walk(p);
-              else {
-                let s; try { s = fs.readFileSync(p, 'utf8'); } catch { continue; }
-                s = s.replaceAll('/_next', prefix + '/_next')
-                     .replaceAll('"_next/', '"' + prefix + '/_next/')
-                     .replaceAll("'_next/", "'" + prefix + "/_next/")
-                     .replaceAll('`_next/', '`' + prefix + '/_next/')
-                     .replaceAll(prefix + '/_next', 'https://huihui1071.github.io' + prefix + '/_next')
-                     .replaceAll('/favicon', prefix + '/favicon')
-                     .replaceAll(prefix + prefix, prefix);
-                fs.writeFileSync(p, s);
-              }
-            }
-          }
-          walk(root);
-          NODE
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist/client
