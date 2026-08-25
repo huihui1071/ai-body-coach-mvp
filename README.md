@@ -1,6 +1,7 @@
 # AI 智能体测仪教练端 MVP 低保真原型
 
 在线演示：<https://ai-body-coach-mvp.zhiweiwang.chatgpt.site/>  
+GitHub Pages：<https://huihui1071.github.io/ai-body-coach-mvp/>  
 GitHub 仓库：<https://github.com/huihui1071/ai-body-coach-mvp>
 
 本项目根据《AI智能体测仪_教练端MVP_PRD》V1.0 制作，用于产品评审、核心流程演示和开发前需求验证。
