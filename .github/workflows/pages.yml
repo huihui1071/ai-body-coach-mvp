@@ -30,6 +30,9 @@ jobs:
               else {
                 let s; try { s = fs.readFileSync(p, 'utf8'); } catch { continue; }
                 s = s.replaceAll('/_next', prefix + '/_next')
+                     .replaceAll('"_next/', '"' + prefix + '/_next/')
+                     .replaceAll("'_next/", "'" + prefix + "/_next/")
+                     .replaceAll('`_next/', '`' + prefix + '/_next/')
                      .replaceAll('/favicon', prefix + '/favicon')
                      .replaceAll(prefix + prefix, prefix);
                 fs.writeFileSync(p, s);
