@@ -1,0 +1,37 @@
+:root{--brand:#36594c;--brand-soft:#e8f0ec;--danger:#a8463b;--danger-soft:#fff1ef;--text:#1f2925;--sub:#65726c}
+button{transition:transform 140ms ease,background-color 140ms ease,color 140ms ease,border-color 140ms ease,box-shadow 140ms ease}
+button:active:not(:disabled){transform:scale(.98)}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #36594c33;outline-offset:2px}
+.home-header h2{font-size:23px;font-weight:700;color:var(--text)}
+.home-header p,.home-header span{font-size:13px;color:var(--sub)}
+.section-heading h3{font-size:16px;font-weight:700}
+.section-heading span{font-size:12px}
+.work-summary div{padding:13px 14px;border-color:#d9e1dd}
+.work-summary strong{font-size:24px;color:var(--brand)}
+.work-summary span{font-size:12px}
+.task-card{min-height:78px;padding:12px 13px;border-left-width:4px;box-shadow:0 3px 12px #26352f0a}
+.task-card:hover{border-color:#b9c7c0;box-shadow:0 6px 18px #26352f12}
+.task-card.risk-3,.task-card.risk-4{background:var(--danger-soft);border-color:#e7c2bd;border-left-color:var(--danger)}
+.task-copy b{font-size:14px;line-height:1.4}.task-copy b em{font-size:11px;margin-left:6px}
+.task-copy small{font-size:12px;line-height:1.45;margin-top:6px;color:var(--sub)}
+.health-risk,.risk-tag{font-size:11px!important}.follow-tag{font-size:11px!important}
+.bottom-nav button{font-size:12px}.bottom-nav button>span{font-size:20px}
+.bottom-nav button.active{color:var(--brand)}.bottom-nav button.active:before{background:var(--brand);height:3px}
+.page-header h2{font-size:20px}.page-header p{font-size:12px}
+.permission-banner b{font-size:13px}.permission-banner p{font-size:12px}
+.contact-card span,.score-card>div:last-child>span,.metric-preview span,.report-metrics span{font-size:11px}
+.contact-card b,.metric-preview b,.report-metrics b{font-size:14px}
+.full-row b{font-size:14px}.full-row small{font-size:11px}
+.primary-action,.secondary-action,.disabled-action,.dual-actions button,.sticky-action{min-height:46px;border-radius:10px;font-size:13px}
+.primary-action,.sticky-action{background:var(--brand);border-color:var(--brand)}
+.secondary-action{border-color:#8b9892}
+.editor-label>span,.form-screen label>span{font-size:13px}
+.editor-label textarea,.form-screen textarea,.form-screen input,.form-screen select,.plan-note textarea{font-size:13px;border-color:#cfd8d3}
+.editor-label textarea:focus,.form-screen textarea:focus,.form-screen input:focus,.form-screen select:focus{border-color:var(--brand)}
+.priority-list strong{font-size:13px}.priority-list small{font-size:11px;line-height:1.45}
+.safety-note,.visibility-note{font-size:11px}
+.toast{font-size:12px;animation:toastIn 180ms ease-out}
+@keyframes toastIn{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translate(-50%,0)}}
+.screen-content{animation:screenIn 180ms ease-out}
+@keyframes screenIn{from{opacity:.25;transform:translateX(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

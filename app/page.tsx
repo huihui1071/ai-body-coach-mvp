@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import "./polish.css";
 
 type FollowMode = "free" | "mine" | "other";
 type Tab = "work" | "members" | "me";
