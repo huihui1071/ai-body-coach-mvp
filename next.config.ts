@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
   images: { unoptimized: true },
-  basePath: "/ai-body-coach-mvp",
+  basePath: "",
   assetPrefix: "/ai-body-coach-mvp/",
 };
 

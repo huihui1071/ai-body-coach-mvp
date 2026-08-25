@@ -18,12 +18,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - name: Flatten static export for project Pages
-        run: |
-          if [ -d dist/client/ai-body-coach-mvp ]; then
-            cp -R dist/client/ai-body-coach-mvp/. dist/client/
-            rm -rf dist/client/ai-body-coach-mvp
-          fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist/client
