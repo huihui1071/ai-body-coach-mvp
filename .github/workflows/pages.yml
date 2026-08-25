@@ -1,0 +1,26 @@
+name: Deploy Coach Demo to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Prefix GitHub Pages asset paths
+        run: grep -IlRZ . dist/client | xargs -0 sed -i 's#"/_next#"/ai-body-coach-mvp/_next#g; s#href="/#href="/ai-body-coach-mvp/#g; s#src="/#src="/ai-body-coach-mvp/#g; s#url(/_next#url(/ai-body-coach-mvp/_next#g'
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist/client
+      - uses: actions/deploy-pages@v4
