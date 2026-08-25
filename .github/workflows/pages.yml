@@ -19,7 +19,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Prefix GitHub Pages asset paths
-        run: grep -IlRZ . dist/client | xargs -0 sed -i 's#"/_next#"/ai-body-coach-mvp/_next#g; s#href="/#href="/ai-body-coach-mvp/#g; s#src="/#src="/ai-body-coach-mvp/#g; s#url(/_next#url(/ai-body-coach-mvp/_next#g'
+        run: grep -IlRZ . dist/client | xargs -0 sed -i 's#/_next#/ai-body-coach-mvp/_next#g; s#href="/favicon#href="/ai-body-coach-mvp/favicon#g; s#src="/favicon#src="/ai-body-coach-mvp/favicon#g; s#url(/_next#url(/ai-body-coach-mvp/_next#g'
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist/client
