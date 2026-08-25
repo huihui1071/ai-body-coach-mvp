@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import "./polish.css";
+import {WorkScreenV2,MembersScreenV2,AnalysisV2} from "./p0-components";
 
 type FollowMode = "free" | "mine" | "other";
 type Tab = "work" | "members" | "me";
@@ -28,13 +29,13 @@ export default function Home(){
   const flash=(msg:string)=>{setToast(msg);window.setTimeout(()=>setToast(""),2200)};const openMember=(id:string)=>{setSelectedId(id);setScreen("detail")};const goRoot=(next?:Tab)=>{if(next)setTab(next);setScreen("root")};
   return <main className="prototype-stage">
     <section className="phone-shell"><div className="status-bar"><span>9:41</span><span>● ● ▰</span></div><div className="app-viewport">
-      {screen==="root"&&tab==="work"&&<WorkScreen open={openMember}/>} 
-      {screen==="root"&&tab==="members"&&<MembersScreen kind={memberTab} setKind={setMemberTab} open={openMember} overrides={overrides} converted={converted}/>} 
+      {screen==="root"&&tab==="work"&&<WorkScreenV2 open={openMember} flash={flash}/>} 
+      {screen==="root"&&tab==="members"&&<MembersScreenV2 kind={memberTab} setKind={setMemberTab} open={openMember} overrides={overrides} converted={converted}/>} 
       {screen==="root"&&tab==="me"&&<MeScreen serviceData={()=>setScreen("serviceData")}/>} 
       {screen==="serviceData"&&<ServiceData back={()=>setScreen("root")} open={openMember}/>} 
       {screen==="detail"&&<MemberDetail member={member} back={()=>goRoot("members")} report={()=>setScreen("report")} analysis={()=>setScreen("analysis")} follow={()=>setScreen("follow")} convert={()=>setScreen("convert")} training={()=>setScreen("training")} start={()=>{setOverrides(s=>({...s,[member.id]:"mine"}));flash("已取得跟进权，其他教练将看到脱敏状态")}} flash={flash}/>} 
       {screen==="report"&&<Report member={member} back={()=>setScreen("detail")} analysis={()=>setScreen("analysis")}/>} 
-      {screen==="analysis"&&<Analysis member={member} value={analysisText} setValue={setAnalysisText} status={analysisStatus} setStatus={setAnalysisStatus} back={()=>setScreen("detail")} follow={()=>setScreen("follow")} flash={flash}/>} 
+      {screen==="analysis"&&<AnalysisV2 member={member} value={analysisText} setValue={setAnalysisText} status={analysisStatus} setStatus={setAnalysisStatus} back={()=>setScreen("detail")} follow={()=>setScreen("follow")} flash={flash}/>} 
       {screen==="follow"&&<Follow member={member} back={()=>setScreen("detail")} convert={()=>setScreen("convert")} flash={flash}/>} 
       {screen==="convert"&&<Convert member={member} back={()=>setScreen("detail")} confirm={()=>{setConverted(true);setScreen("training");flash("已建立唯一私教归属")}}/>} 
       {screen==="training"&&<Training member={member} status={planStatus} setStatus={setPlanStatus} back={()=>setScreen("detail")} flash={flash}/>} 
